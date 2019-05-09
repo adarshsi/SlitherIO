@@ -1,18 +1,175 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<meta charset="utf-8" />-->
+    <!--<title>Flop Binary</title>-->
+    <!--<style>-->
+        <!--* { padding: 0; margin: 0; }-->
+        <!--canvas { background: #eee; display: block; margin: 0 auto; }-->
+    <!--</style>-->
+
+<!--</head>-->
+<!--<script src="/socket.io/socket.io.js"></script>-->
+<!--<body onload = "startGame()">-->
+
+<!--<script src = "static/dino.js">-->
+
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Flop Binary</title>
+    <title>The Sperminator</title>
     <style>
-        * { padding: 0; margin: 0; }
-        canvas { background: #eee; display: block; margin: 0 auto; }
+        #can {
+            height: 400px;
+            width: 600px;
+            outline: 10px solid red;
+            background-color: indianred;
+            position: relative;
+        }
+        #sperm {
+            height: 20px;
+            width: 20px;
+            background-color: white;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #projectile {
+            height: 20px;
+            width: 20px;
+            background-color: #d7ff26;
+            position: absolute;
+            -webkit-animation-name: kprojectile1;
+            -webkit-animation-duration: 3s;
+            animation-name: kprojectile1;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+        #projectile2 {
+            height: 20px;
+            width: 20px;
+            background-color: #d7ff26;
+            position: absolute;
+            -webkit-animation-name: kprojectile2;
+            -webkit-animation-duration: 6s;
+            animation-name: kprojectile2;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+        }
+        #projectile3 {
+            height: 20px;
+            width: 20px;
+            background-color: #d7ff26;
+            position: absolute;
+            -webkit-animation-name: kprojectile3;
+            -webkit-animation-duration: 6s;
+            animation-name: kprojectile3;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes kprojectile1 {
+            0%   {left: 225px; top: 150px;}
+            25%  {left: 225px; top: 240px;}
+            50%  {left: 320px; top: 240px;}
+            75%  {left: 320px; top: 150px;}
+            100% {left: 225px; top: 150px;}
+        }
+        @keyframes kprojectile2 {
+            0%   {left: 150px; top: 0px;}
+            50%  {left: 150px; top: 380px;}
+            100% {left: 150px; top: 0px}
+        }
+        @keyframes kprojectile3 {
+            0%  {left: 500px; top: 380px;}
+            50% {left: 500px; top: 0px}
+            100%  {left: 500px; top: 380px;}
+        }
+        #exit {
+            height: 50px;
+            width: 50px;
+            outline: 6px solid #00ff00;
+            background-color: palevioletred;
+            position: fixed;
+            bottom: 250px;
+            right: 1125px;
+        }
+        #wrongHole {
+            height: 40px;
+            width: 40px;
+            outline: 4px solid red;
+            background-color: black;
+            position: fixed;
+            bottom: 400px;
+            right: 1300px;
+        }
+        #wrongHole2 {
+            height: 40px;
+            width: 40px;
+            outline: 4px solid red;
+            background-color: black;
+            position: fixed;
+            bottom: 250px;
+            right: 950px;
+        }
+        #wrongHole3 {
+            height: 40px;
+            width: 40px;
+            outline: 4px solid red;
+            background-color: black;
+            position: fixed;
+            bottom: 150px;
+            right: 1300px;
+        }
+        body {
+            background-color: black;
+        }
+        h1 {
+            color: white;
+            text-indent: 200px;
+            text-shadow: 3px 2px red;
+            font-family: "Times New Roman";
+        }
+        h2 {
+            color: white;
+            text-align: right;
+            margin-right: 200px;
+        }
+        #text {
+            color: #00ff00;
+        }
+        #text1 {
+            text-shadow: 2px 1px #009e00;
+        }
+        h3 {
+            color: white;
+            text-align: right;
+            margin-right: 150px;
+        }
+        h4 {
+            color: white;
+            text-align: right;
+            margin-right: 150px;
+            text-shadow: 1px 1px red;
+        }
     </style>
 </head>
-<body onload = "startGame()">
-
-<script src = "dino.js">
-
-</script>
-
+<body>
+<div id="can">
+    <div id="wrongHole"></div>
+    <div id="wrongHole2"></div>
+    <div id="exit"></div>
+    <div id="sperm"></div>
+    <div id="projectile"></div>
+    <div id="projectile2"></div>
+    <div id="projectile3"></div>
+<canvas id="canvas"></canvas>
+<script src="/socket.io/socket.io.js"></script>
+</div>
 </body>
+<script src="static/game.js"></script>
 </html>
