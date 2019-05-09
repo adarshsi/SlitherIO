@@ -54,9 +54,6 @@ Game.prototype = {
             snake.addDestroyedCallback(this.snakeDestroyed, this);
         }
     },
-    /**
-     * Main update loop
-     */
     update: function() {
         //update game components
         for (var i = this.game.snakes.length - 1 ; i >= 0 ; i--) {
@@ -67,12 +64,6 @@ Game.prototype = {
             f.food.update();
         }
     },
-    /**
-     * Create a piece of food at a point
-     * @param  {number} x x-coordinate
-     * @param  {number} y y-coordinate
-     * @return {Food}   food object created
-     */
     initFood: function(x, y) {
         var f = new Food(this.game, x, y);
         f.sprite.body.setCollisionGroup(this.foodCollisionGroup);

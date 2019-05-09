@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Sperminator</title>
+    <style>
+        #canvas {
+            height: 400px;
+            width: 600px;
+            outline: 10px solid red;
+            background-color: indianred;
+            position: relative;
+        }
+        #sperm {
+            height: 20px;
+            width: 20px;
+            background-color: white;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #projectile {
+            height: 20px;
+            width: 20px;
+            background-color: #d7ff26;
+            position: absolute;
+            -webkit-animation-name: kprojectile1;
+            -webkit-animation-duration: 3s;
+            animation-name: kprojectile1;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+        #projectile2 {
+            height: 20px;
+            width: 20px;
+            background-color: #d7ff26;
+            position: absolute;
+            -webkit-animation-name: kprojectile2;
+            -webkit-animation-duration: 6s;
+            animation-name: kprojectile2;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+        }
+        #projectile3 {
+            height: 20px;
+            width: 20px;
+            background-color: #d7ff26;
+            position: absolute;
+            -webkit-animation-name: kprojectile3;
+            -webkit-animation-duration: 6s;
+            animation-name: kprojectile3;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes kprojectile1 {
+            0%   {left: 225px; top: 150px;}
+            25%  {left: 225px; top: 240px;}
+            50%  {left: 320px; top: 240px;}
+            75%  {left: 320px; top: 150px;}
+            100% {left: 225px; top: 150px;}
+        }
+        @keyframes kprojectile2 {
+            0%   {left: 150px; top: 0px;}
+            50%  {left: 150px; top: 380px;}
+            100% {left: 150px; top: 0px}
+        }
+        @keyframes kprojectile3 {
+            0%  {left: 500px; top: 380px;}
+            50% {left: 500px; top: 0px}
+            100%  {left: 500px; top: 380px;}
+        }
+        #exit {
+            height: 50px;
+            width: 50px;
+            outline: 6px solid #00ff00;
+            background-color: palevioletred;
+            position: fixed;
+            bottom: 250px;
+            right: 1125px;
+        }
+        #wrongHole {
+            height: 40px;
+            width: 40px;
+            outline: 4px solid red;
+            background-color: black;
+            position: fixed;
+            bottom: 400px;
+            right: 1300px;
+        }
+        #wrongHole2 {
+            height: 40px;
+            width: 40px;
+            outline: 4px solid red;
+            background-color: black;
+            position: fixed;
+            bottom: 250px;
+            right: 950px;
+        }
+        #wrongHole3 {
+            height: 40px;
+            width: 40px;
+            outline: 4px solid red;
+            background-color: black;
+            position: fixed;
+            bottom: 150px;
+            right: 1300px;
+        }
+        body {
+            background-color: black;
+        }
+        h1 {
+            color: white;
+            text-indent: 200px;
+            text-shadow: 3px 2px red;
+            font-family: "Times New Roman";
+        }
+        h2 {
+            color: white;
+            text-align: right;
+            margin-right: 200px;
+        }
+        #text {
+            color: #00ff00;
+        }
+        #text1 {
+            text-shadow: 2px 1px #009e00;
+        }
+        h3 {
+            color: white;
+            text-align: right;
+            margin-right: 150px;
+        }
+        h4 {
+            color: white;
+            text-align: right;
+            margin-right: 150px;
+            text-shadow: 1px 1px red;
+        }
+    </style>
+</head>
+<body>
+<h1>Game Project</h1>
+<h2 id="text1">Get the sprite to the Green Zone to win the game!</h2>
+<h3>To move, use the arrow keys. But remember, you can't move out of bounds!</h3>
+<h3>Avoid the moving obstacles and the first 10 to make it to the Green Zone win the game!</h3>
+<h4>Created by: Adarsh, Gabriel and John</h4>
+<div id="canvas">
+    <div id="wrongHole"></div>
+    <div id="wrongHole2"></div>
+    <div id="wrongHole3"></div>
+    <div id="exit"></div>
+    <div id="sperm"></div>
+    <div id="projectile"></div>
+    <div id="projectile2"></div>
+    <div id="projectile3"></div>
+</div>
+<h2 id="text">Get to the Green Zone!</h2>
+<script>
+    var sperm = document.getElementById("sperm");
+    var spermLeft = 0;
+    var spermTop = 0;
+    var proj1 = document.getElementById("projectile1");
+    var txt = document.getElementById("text");
+
+    function move(e) {                                  //gives "You Win!" even if you're not in the exit, you just have
+        if (e.keyCode === 39) {                         //to be so far left and so far down to trigger the "You Win" text
+            spermLeft += 5;
+            sperm.style.left = spermLeft + 'px'
+            if (spermLeft >= 580) {
+                spermLeft -= 5;
+            }
+            if (spermLeft >= 240 && spermTop >= 180) {
+                txt.innerHTML = "You Win!";
+                txt.style.color = 'blue';
+                txt.style.fontSize = '350%';
+            }
+        }
+        if (e.keyCode === 37) {
+            spermLeft -= 5;
+            sperm.style.left = spermLeft + 'px'
+            if (spermLeft <= 0) {
+                spermLeft += 5;
+            }
+            if (spermLeft >= 240 && spermTop >= 180) {
+                txt.innerHTML = "You Win!";
+                txt.style.color = 'blue';
+                txt.style.fontSize = '350%';
+            }
+        }
+        if (e.keyCode === 38) {
+            spermTop -= 5;
+            sperm.style.top = spermTop + 'px'
+            if (spermTop <= 0) {
+                spermTop += 5;
+            }
+            if (spermLeft >= 240 && spermTop >= 180) {
+                txt.innerHTML = "You Win!";
+                txt.style.color = 'blue';
+                txt.style.fontSize = '350%';
+            }
+        }
+        if (e.keyCode === 40) {
+            spermTop += 5;
+            sperm.style.top = spermTop + 'px'
+            if (spermTop >= 380) {
+                spermTop -= 5;
+            }
+            if (spermLeft >= 240 && spermTop >= 180) {
+                txt.innerHTML = "You Win!";
+                txt.style.color = 'blue';
+                txt.style.fontSize = '350%';
+            }
+        }
+    }
+    document.onkeydown = move;
+</script>
+</body>
+</html>

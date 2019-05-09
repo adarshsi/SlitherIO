@@ -177,7 +177,7 @@ Snake.prototype = {
         while (this.headPath[i].x != this.sections[1].body.x &&
         this.headPath[i].y != this.sections[1].body.y) {
             if (this.headPath[i].x == this.lastHeadPosition.x &&
-            this.headPath[i].y == this.lastHeadPosition.y) {
+                this.headPath[i].y == this.lastHeadPosition.y) {
                 found = true;
                 break;
             }
